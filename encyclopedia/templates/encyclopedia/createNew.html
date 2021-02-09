@@ -1,0 +1,33 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+
+{% block body %}
+    <h5 style="text-align: center;">Create New Page!</h5>
+    {% if alert is True %}
+    <div class="alert alert-warning" role="alert">
+        You must write Title and Content!
+    </div>
+    {% endif %}
+
+    {% if same is True %}
+    <div class="alert alert-warning" role="alert">
+        Page with this title already Exists!
+    </div>
+    {% endif %}
+
+    <form action="/createNew/" method="post">
+        {% csrf_token %}
+        <label for="title"class="label_title"  display="block">Title:</label>
+        <input class="title" id="title" type="text" name="title" placeholder="Title">
+        <br>
+        <textarea id="textarea" class="new_textarea" name="textarea" placeholder="Write, text!" rows="12" cols="20">
+
+        </textarea>
+        <input type="submit"  class="submit_textarea" value="Save">
+    </form>
+   
+{% endblock %}

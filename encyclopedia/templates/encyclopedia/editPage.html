@@ -1,0 +1,35 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+
+{% block body %}
+    <h5 style="text-align: center;">Edit Page!</h5>
+
+    {% if worning is True %}
+    <div class="alert alert-warning" role="alert">
+        Error, There is no Title Value!
+    </div>
+    {% endif %}
+
+    <!-- <form action="/editPage/" method="post">
+        {% csrf_token %}
+        <label for="edit_textarea" class="label_textarea" display="block">Text:</label>
+        <textarea id="edit_textarea" class="new_textarea" name="edit_textarea" placeholder="Write, text!" rows="12" cols="20">
+            {{ content }}
+        </textarea>
+        <input type="submit"  class="submit_textarea" value="Save">
+    </form> -->
+    <form action="/editPage/" method="post">
+        {% csrf_token %}
+        <input class="title" id="title" type="text" name="title" value="{{ title }}" style="display: none;">
+
+        <textarea id="edit_textarea" class="new_textarea" name="edit_textarea" placeholder="Write, text!" rows="12" cols="20">
+            {{ content }}
+        </textarea>
+        <input type="submit"  class="submit_textarea" value="Save">
+    </form>
+   
+{% endblock %}

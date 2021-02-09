@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+<form action="/editPage/" method="POST">
+    {% csrf_token %}
+    <input type="text" id="name" name="title" value="{{ title }}" style="display: none;">
+    <input type="submit" value="Edit">
+</form>
+
+{{content |safe}}
+    
+{% if not content %}
+<div class="alert alert-warning" role="alert">
+    Your requested page was not found.
+</div>
+{% endif %}
+
+{% endblock %}

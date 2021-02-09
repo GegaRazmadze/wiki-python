@@ -1,4 +1,3 @@
-  
 # wiki
 #### Wiki is Wikipedia-like online encyclopedia.
 
